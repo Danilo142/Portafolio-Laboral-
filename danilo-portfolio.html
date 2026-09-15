@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danilo Cerna — Automation & AI Systems Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14181C;
+    --ink-soft:#1C2127;
+    --paper:#F4F1EA;
+    --amber:#E3A23C;
+    --amber-dim:#8A6329;
+    --slate:#5D7A91;
+    --muted-dark:#8B94A0;
+    --muted-light:#6E6A5E;
+    --line:#2A3038;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk', sans-serif;
+    color:var(--paper);
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(20,24,28,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .brand{font-weight:600; font-size:17px;}
+  .brand span{color:var(--amber);}
+  .navlinks{display:flex; gap:28px; font-size:14px; color:var(--muted-dark);}
+  .navlinks a:hover{color:var(--paper);}
+  @media (max-width:640px){ .navlinks{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 96px;}
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+  .eyebrow-line{
+    display:flex; align-items:center; gap:10px;
+    color:var(--slate); font-size:14px; margin-bottom:22px;
+  }
+  .eyebrow-line .dot{width:7px; height:7px; border-radius:50%; background:var(--amber);}
+  .hero h1{
+    font-size:44px; line-height:1.12; font-weight:600; max-width:620px;
+  }
+  @media (max-width:640px){ .hero h1{font-size:32px;} }
+  .hero p.lede{
+    margin-top:22px; max-width:520px; color:var(--muted-dark); font-size:17px;
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 22px; border-radius:6px; font-size:14.5px; font-weight:500;
+    text-decoration:none; border:1px solid transparent; cursor:pointer;
+  }
+  .btn-primary{background:var(--amber); color:#1A1300;}
+  .btn-primary:hover{background:#EDAE54;}
+  .btn-ghost{border-color:var(--line); color:var(--paper);}
+  .btn-ghost:hover{border-color:var(--slate);}
+
+  /* ---------- FLOW DIAGRAM ---------- */
+  .flow-box{
+    border:1px solid var(--line); border-radius:10px; padding:28px 24px;
+    background:linear-gradient(180deg, var(--ink-soft), var(--ink));
+  }
+  .flow-caption{
+    margin-top:20px; font-size:12.5px; color:var(--muted-dark);
+    display:flex; justify-content:space-between; padding:0 2px;
+  }
+  .flow-col{display:flex; flex-direction:column; align-items:stretch;}
+  .fnode-row{display:flex; gap:14px;}
+  .fnode-row .fnode{flex:1;}
+  .fnode{
+    background:var(--ink); border:1px solid var(--line); border-radius:7px;
+    padding:14px 16px; display:flex; flex-direction:column; gap:3px;
+  }
+  .fnode b{font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:500; color:var(--paper);}
+  .fnode span{font-size:12px; color:var(--muted-dark);}
+  .fnode-end{border-color:var(--amber-dim);}
+  .fnode-end b{color:var(--amber);}
+  .fconn{width:1px; height:16px; background:var(--line); margin:2px 0 2px 22px;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:80px 0;}
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:44px; gap:20px; border-bottom:1px solid var(--line); padding-bottom:20px;
+  }
+  .section-head h2{font-size:28px; font-weight:600;}
+  .section-head .count{font-size:14px; color:var(--muted-dark);}
+
+  /* ---------- CASE STUDIES ---------- */
+  .case-feature{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px; align-items:start;
+    padding-bottom:56px; margin-bottom:56px; border-bottom:1px solid var(--line);
+  }
+  @media (max-width:860px){ .case-feature{grid-template-columns:1fr; gap:28px;} }
+  .case-tag{
+    display:inline-block; font-size:12px; color:var(--slate); margin-bottom:14px;
+  }
+  .case-feature h3{font-size:26px; margin-bottom:14px;}
+  .ba-row{display:flex; gap:0; margin:20px 0; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  .ba-col{flex:1; padding:16px 18px;}
+  .ba-col + .ba-col{border-left:1px solid var(--line);}
+  .ba-label{font-size:11.5px; color:var(--muted-dark); margin-bottom:6px;}
+  .ba-col.before .ba-label{color:#A17A5B;}
+  .ba-col.after .ba-label{color:var(--amber);}
+  .ba-col p{font-size:14.5px; color:var(--paper);}
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;}
+  .chip{
+    font-size:12px; padding:5px 11px; border:1px solid var(--line); border-radius:20px;
+    color:var(--muted-dark);
+  }
+  /* ---------- LIVE PHONE MOCK (WhatsApp) ---------- */
+  .phone-mock{
+    width:100%; max-width:300px; margin:0 auto;
+    background:#0B141A; border:8px solid #1C1F22; border-radius:28px;
+    overflow:hidden; box-shadow:0 20px 40px rgba(0,0,0,0.35);
+  }
+  .phone-bar{
+    display:flex; align-items:center; gap:10px; padding:14px 16px;
+    background:#1F2C34; color:#E9EDEF;
+  }
+  .ph-back{color:#8696A0; font-size:18px;}
+  .ph-avatar{
+    width:34px; height:34px; border-radius:50%; background:var(--amber);
+    color:#1A1300; display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; flex-shrink:0;
+  }
+  .ph-name{font-size:14px; font-weight:600;}
+  .ph-status{font-size:11.5px; color:#8696A0;}
+  .phone-chat{
+    min-height:340px; padding:16px 12px; display:flex; flex-direction:column; gap:8px;
+    background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size:14px 14px;
+  }
+  .wa-msg{
+    max-width:78%; padding:8px 10px; border-radius:8px; font-size:13px; line-height:1.4;
+    opacity:0; transform:translateY(6px); animation:wa-in 0.35s ease forwards;
+  }
+  @keyframes wa-in{ to{opacity:1; transform:translateY(0);} }
+  .wa-msg.in{align-self:flex-start; background:#202C33; color:#E9EDEF; border-top-left-radius:2px;}
+  .wa-msg.out{align-self:flex-end; background:#005C4B; color:#E9EDEF; border-top-right-radius:2px;}
+  .wa-typing{
+    align-self:flex-start; background:#202C33; border-radius:8px; border-top-left-radius:2px;
+    padding:10px 14px; display:flex; gap:4px; opacity:0; animation:wa-in 0.3s ease forwards;
+  }
+  .wa-typing i{width:6px; height:6px; border-radius:50%; background:#8696A0; display:block; animation:wa-bounce 1s infinite ease-in-out;}
+  .wa-typing i:nth-child(2){animation-delay:0.15s;} .wa-typing i:nth-child(3){animation-delay:0.3s;}
+  @keyframes wa-bounce{ 0%,60%,100%{transform:translateY(0); opacity:0.5;} 30%{transform:translateY(-3px); opacity:1;} }
+
+  /* ---------- SCREEN MOCKS (POS) ---------- */
+  .screen-mock{
+    border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-bottom:18px;
+    background:var(--ink-soft);
+  }
+  .screen-bar{
+    display:flex; align-items:center; gap:6px; padding:10px 12px; background:var(--ink);
+    border-bottom:1px solid var(--line);
+  }
+  .screen-bar span{width:7px; height:7px; border-radius:50%; background:var(--line);}
+  .role-badge{
+    margin-left:auto; font-size:10.5px; padding:2px 9px; border:1px solid var(--slate);
+    border-radius:20px; color:var(--slate);
+  }
+  .screen-body{padding:14px 16px;}
+  .pos-row{display:flex; justify-content:space-between; gap:8px; font-size:12.5px; color:var(--muted-dark); padding:6px 0; border-bottom:1px dashed var(--line);}
+  .pos-row span:first-child{color:var(--paper); flex:1;}
+  .pos-right{color:var(--muted-dark); white-space:nowrap;}
+  .pos-total{display:flex; justify-content:space-between; font-size:14px; font-weight:600; color:var(--paper); padding:10px 0 4px;}
+  .pos-badge{
+    margin-top:10px; font-size:11.5px; color:var(--amber); background:rgba(227,162,60,0.1);
+    padding:7px 10px; border-radius:5px;
+  }
+  .scan-row{position:relative; display:flex; justify-content:center; padding:10px 0 16px; overflow:hidden;}
+  .barcode{display:flex; gap:2px; align-items:stretch; height:34px;}
+  .barcode i{width:3px; background:var(--muted-dark); display:block;}
+  .barcode i:nth-child(odd){background:var(--paper);}
+  .scan-line{
+    position:absolute; left:10%; right:10%; height:2px; background:var(--amber);
+    top:0; box-shadow:0 0 6px var(--amber); animation:scan 1.8s ease-in-out infinite;
+  }
+  @keyframes scan{ 0%,100%{top:6px;} 50%{top:38px;} }
+
+  .case-note{
+    background:var(--ink-soft); border-left:2px solid var(--amber);
+    padding:14px 18px; font-size:13.5px; color:var(--muted-dark); margin-top:20px; border-radius:0 6px 6px 0;
+  }
+
+  .case-pair{display:grid; grid-template-columns:1fr 1fr; gap:36px;}
+  @media (max-width:860px){ .case-pair{grid-template-columns:1fr;} }
+  .case-card h3{font-size:20px; margin-bottom:10px;}
+  .case-card .ba-row{margin:16px 0;}
+  .case-card p.desc{color:var(--muted-dark); font-size:14.5px;}
+
+  /* ---------- PROCESS ---------- */
+  .process-list{display:flex; flex-direction:column;}
+  .process-item{
+    display:grid; grid-template-columns:56px 1fr; gap:20px;
+    padding:26px 0; border-top:1px solid var(--line);
+  }
+  .process-item:last-child{border-bottom:1px solid var(--line);}
+  .process-num{font-family:'Space Grotesk',sans-serif; font-size:20px; color:var(--amber-dim);}
+  .process-item h3{font-size:18px; margin-bottom:6px;}
+  .process-item p{color:var(--muted-dark); font-size:14.5px; max-width:560px;}
+
+  /* ---------- STACK ---------- */
+  .stack-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:32px 48px;}
+  @media (max-width:640px){ .stack-grid{grid-template-columns:1fr;} }
+  .stack-group h3{
+    font-size:13px; text-transform:none; color:var(--slate); margin-bottom:14px; font-weight:500;
+    font-family:'Inter',sans-serif;
+  }
+  .stack-group .chip-row{margin-top:0;}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{padding:80px 0 48px; border-top:1px solid var(--line);}
+  .contact-grid{
+    display:grid; grid-template-columns:1.2fr 0.8fr; gap:48px; align-items:end;
+  }
+  @media (max-width:720px){ .contact-grid{grid-template-columns:1fr;} }
+  footer h2{font-size:30px; max-width:480px;}
+  .contact-links{display:flex; flex-direction:column; gap:12px; font-size:15px;}
+  .contact-links a{text-decoration:none; color:var(--paper); border-bottom:1px solid var(--line); padding-bottom:10px;}
+  .contact-links a:hover{border-color:var(--amber); color:var(--amber);}
+  .foot-meta{margin-top:56px; display:flex; justify-content:space-between; font-size:12.5px; color:var(--muted-dark); flex-wrap:wrap; gap:10px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Danilo Cerna <span>·</span> DV<span>Soluciones</span></div>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow-line"><span class="dot"></span> Available for remote work, any time zone</div>
+      <h1>I build the systems small businesses run on — and the AI that answers their customers.</h1>
+      <p class="lede">Automation, databases, and AI assistants for SMEs that can't afford custom software but can't run on spreadsheets forever. End to end: discovery, build, and handover.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/542604266667" target="_blank">Message on WhatsApp</a>
+        <a class="btn btn-ghost" href="mailto:daniverardo14@gmail.com">daniverardo14@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="flow-box">
+      <div class="flow-col">
+        <div class="fnode"><b>Customer</b><span>WhatsApp inquiry</span></div>
+        <div class="fconn"></div>
+        <div class="fnode-row">
+          <div class="fnode"><b>Make.com</b><span>Automation layer</span></div>
+          <div class="fnode"><b>Airtable</b><span>Live catalog + data</span></div>
+        </div>
+        <div class="fconn"></div>
+        <div class="fnode"><b>Gemini / Claude</b><span>AI response logic</span></div>
+        <div class="fconn"></div>
+        <div class="fnode fnode-end"><b>Customer</b><span>Gets answered — 24/7</span></div>
+      </div>
+      <div class="flow-caption"><span>Input</span><span>Automation + AI</span><span>Resolved</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Recent work</h2>
+      <span class="count">3 systems, in production</span>
+    </div>
+
+    <div class="case-feature">
+      <div>
+        <span class="case-tag">Tire &amp; auto service shop</span>
+        <h3>CRM with a WhatsApp AI assistant</h3>
+        <p style="color:var(--muted-dark); font-size:14.5px;">The shop's WhatsApp was its main sales channel, but every price check, financing question, and stock lookup needed a human on the other end.</p>
+        <div class="ba-row">
+          <div class="ba-col before"><div class="ba-label">Before</div><p>Staff manually answered every inquiry, with no memory of past conversations and no live pricing.</p></div>
+          <div class="ba-col after"><div class="ba-label">After</div><p>An AI assistant answers directly on WhatsApp, referencing live tire stock and financing logic in real time.</p></div>
+        </div>
+        <div class="case-note">Originally ran on Make.com; rebuilt the AI logic as a Supabase Edge Function calling the Gemini API to remove the recurring automation-platform cost while keeping the same assistant live for customers.</div>
+        <div class="chip-row">
+          <span class="chip">Supabase</span><span class="chip">Gemini API</span><span class="chip">WhatsApp Business API</span><span class="chip">Airtable</span>
+        </div>
+      </div>
+      <div class="phone-mock" id="phoneDemo">
+        <div class="phone-bar"><span class="ph-back">‹</span>
+          <div class="ph-avatar">N</div>
+          <div><div class="ph-name">Naty</div><div class="ph-status">AI assistant · online</div></div>
+        </div>
+        <div class="phone-chat" id="chatDemo"></div>
+      </div>
+    </div>
+
+    <div class="case-pair">
+      <div class="case-card">
+        <span class="case-tag">Building materials retailer</span>
+        <h3>POS with government e-invoicing</h3>
+        <div class="screen-mock">
+          <div class="screen-bar"><span></span><span></span><span></span></div>
+          <div class="screen-body">
+            <div class="pos-row"><span>Ceramic tile 60x60</span><span class="pos-right">12.5 m² &nbsp;·&nbsp; $40,000</span></div>
+            <div class="pos-row"><span>Tile adhesive 25kg</span><span class="pos-right">2 units &nbsp;·&nbsp; $14,600</span></div>
+            <div class="pos-total"><span>Total</span><span>$54,600</span></div>
+            <div class="pos-badge">✓ E-invoice issued — tax authority</div>
+          </div>
+        </div>
+        <div class="ba-row">
+          <div class="ba-col before"><div class="ba-label">Before</div><p>Sales handwritten, invoicing done separately through a government portal.</p></div>
+          <div class="ba-col after"><div class="ba-label">After</div><p>One POS handles sales and compliant e-invoicing together, installable as a PWA on the shop's tablet.</p></div>
+        </div>
+        <p class="desc">Supports decimal-quantity sales for tile and material sold by area — a case standard POS templates don't handle.</p>
+        <div class="chip-row"><span class="chip">Airtable</span><span class="chip">Make.com</span><span class="chip">Node.js</span><span class="chip">PWA</span></div>
+      </div>
+      <div class="case-card">
+        <span class="case-tag">Neighborhood minimarket</span>
+        <h3>Full POS, formally handed over</h3>
+        <div class="screen-mock">
+          <div class="screen-bar"><span></span><span></span><span></span><div class="role-badge">Cashier</div></div>
+          <div class="screen-body">
+            <div class="scan-row"><div class="barcode"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="scan-line"></span></div>
+            <div class="pos-row"><span>Soda 2.25L</span><span class="pos-right">x2 &nbsp;·&nbsp; $3,200</span></div>
+            <div class="pos-row"><span>Sliced bread</span><span class="pos-right">x1 &nbsp;·&nbsp; $2,100</span></div>
+            <div class="pos-total"><span>Total</span><span>$8,500</span></div>
+          </div>
+        </div>
+        <div class="ba-row">
+          <div class="ba-col before"><div class="ba-label">Before</div><p>Inventory, supplier accounts, and customer debts tracked across notebooks and spreadsheets.</p></div>
+          <div class="ba-col after"><div class="ba-label">After</div><p>Barcode-scanning POS with multi-user roles, supplier ledgers, and debtor tracking.</p></div>
+        </div>
+        <p class="desc">Delivered with a formal handover — acceptance record and IP-transfer contract — not just a login and a goodbye.</p>
+        <div class="chip-row"><span class="chip">Barcode scanning</span><span class="chip">Multi-user roles</span><span class="chip">IP transfer contract</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>How a project runs</h2>
+      <span class="count">Discovery to handover</span>
+    </div>
+    <div class="process-list">
+      <div class="process-item">
+        <div class="process-num">01</div>
+        <div><h3>Discovery</h3><p>Sit with how the business actually operates today — the workarounds, the spreadsheets, the WhatsApp habits — before proposing a system.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">02</div>
+        <div><h3>Design</h3><p>Map the data model and automation flow against real operations: stock, financing rules, invoicing requirements, staff roles.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">03</div>
+        <div><h3>Build</h3><p>Ship a working system early, load it with real data, and adjust against actual daily use rather than a spec document.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">04</div>
+        <div><h3>Handover</h3><p>Formal transfer with documentation — the client owns the system outright, with no dependency left dangling.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Stack</h2>
+      <span class="count">Tools used in production</span>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-group">
+        <h3>Languages</h3>
+        <div class="chip-row">
+          <span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">HTML / CSS</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h3>Automation &amp; backend</h3>
+        <div class="chip-row">
+          <span class="chip">Airtable</span><span class="chip">Make.com</span><span class="chip">Supabase</span><span class="chip">Node.js</span><span class="chip">Vercel</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h3>AI integration</h3>
+        <div class="chip-row">
+          <span class="chip">Gemini API</span><span class="chip">Claude API</span><span class="chip">OpenAI API</span><span class="chip">WhatsApp Business API</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h3>Data &amp; tools</h3>
+        <div class="chip-row">
+          <span class="chip">MySQL</span><span class="chip">Power BI</span><span class="chip">Git / GitHub</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <h2>Have a process running on spreadsheets and group chats? Let's talk about what it should look like instead.</h2>
+      <div class="contact-links">
+        <a href="https://wa.me/542604266667" target="_blank">WhatsApp — +54 260 426-6667</a>
+        <a href="mailto:daniverardo14@gmail.com">daniverardo14@gmail.com</a>
+        <a href="https://github.com/Danilo142" target="_blank">github.com/Danilo142</a>
+      </div>
+    </div>
+    <div class="foot-meta">
+      <span>Danilo Cerna — San Rafael, Mendoza, Argentina</span>
+      <span>Remote · Flexible hours across time zones</span>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    const chatScript = [
+      { side:'in',  text:'Do you have 175/65 R14 in stock?' },
+      { side:'out', text:'Yes, 4 units in stock — $58,400 each ✅' },
+      { side:'in',  text:'Any financing options?' },
+      { side:'out', text:'Yes, up to 6 interest-free installments 👍' },
+    ];
+    function playChatDemo(){
+      const chat = document.getElementById('chatDemo');
+      if(!chat || chat.dataset.played) return;
+      chat.dataset.played = "1";
+      let t = 0;
+      chatScript.forEach((m, i)=>{
+        if(m.side === 'out'){
+          t += 550;
+          const typingDelay = t;
+          t += 900;
+          setTimeout(()=>{
+            const typing = document.createElement('div');
+            typing.className = 'wa-typing';
+            typing.innerHTML = '<i></i><i></i><i></i>';
+            typing.id = 'typing-'+i;
+            chat.appendChild(typing);
+          }, typingDelay);
+          setTimeout(()=>{
+            const typing = document.getElementById('typing-'+i);
+            if(typing) typing.remove();
+            const el = document.createElement('div');
+            el.className = 'wa-msg out';
+            el.textContent = m.text;
+            chat.appendChild(el);
+          }, t);
+        } else {
+          t += 550;
+          setTimeout(()=>{
+            const el = document.createElement('div');
+            el.className = 'wa-msg in';
+            el.textContent = m.text;
+            chat.appendChild(el);
+          }, t);
+        }
+      });
+    }
+    const phoneEl = document.getElementById('phoneDemo');
+    if(phoneEl){
+      if('IntersectionObserver' in window){
+        const io = new IntersectionObserver((entries)=>{
+          entries.forEach(entry=>{ if(entry.isIntersecting) playChatDemo(); });
+        }, { threshold:0.3 });
+        io.observe(phoneEl);
+      } else {
+        setTimeout(playChatDemo, 500);
+      }
+    }
+  </script>
+</body>
+</html>
